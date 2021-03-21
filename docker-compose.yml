@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  certbot:
+    # image: certbot/certbot:latest # for manual plugin
+    image: certbot/dns-cloudflare:latest # for DNS plugin
+    container_name: certbot
+    entrypoint: [ "/bin/sh" ]
+    network_mode: "bridge"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - ./plugin/cloudflare.ini:$HOME/.secrets/certbot/cloudflare.ini # for DNS plugin, manual plugin ought to comment this line
+    tty: true
+    restart: unless-stopped

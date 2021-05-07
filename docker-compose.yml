@@ -4,6 +4,7 @@ services:
   certbot:
     container_name: certbot
     entrypoint: [ "/bin/sh" ]
+    hostname: certbot
     # image: certbot/certbot:latest # for manual plugin
     image: certbot/dns-cloudflare:latest # for DNS plugin
     network_mode: "bridge"

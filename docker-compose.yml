@@ -10,6 +10,6 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
+      - ./plugin/cloudflare.ini:$HOME/.secrets/certbot/cloudflare.ini # for DNS plugin, manual plugin ought to comment this line
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/lib/letsencrypt:/var/lib/letsencrypt
-      - ./plugin/cloudflare.ini:$HOME/.secrets/certbot/cloudflare.ini # for DNS plugin, manual plugin ought to comment this line
